@@ -1,0 +1,29 @@
+:root {
+  --color-white: #fff
+}
+
+.ant-carousel {
+  height: 100%;
+}
+
+.full {
+  height: 100vh;
+}
+
+.chq-atc--button {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.chq-atc--button:focus,.chq-atc--button:active, .chq-atc--button:hover {
+  background-color: transparent;
+  outline: none;
+}
+
+.chq-atc--button > svg {
+  height: 20px;
+  width: 20px;
+  fill: currentColor;
+  display: none;
+}
