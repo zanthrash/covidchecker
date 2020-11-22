@@ -1,6 +1,8 @@
 import React from "react";
 import { useStateMachine } from "../../StateProvider";
-import { Button } from "../../components/Button";
+import { OptionsButton } from "../../components/OptionsButton";
+import { Header } from "../../components/Header";
+import { NavigationButtons } from "../../components/NavigationButtons";
 
 export const CloseContact = () => {
   const { state, sendTo } = useStateMachine();
@@ -23,23 +25,37 @@ export const CloseContact = () => {
 
   return (
     <div>
-      <h3>Will you have further close contact with the person?</h3>
+      <Header>Will you have further close contact with the person?</Header>
 
-      <Button onClick={handleNoMoreContact}>
-        No, I had close contact but I will not have further contact or
-        interactions with the person while they are sick
-      </Button>
+      <div className="grid gap-2 mb-20">
+        <OptionsButton onClick={handleNoMoreContact}>
+          <span className="bg-gray-600 text-gray-100 mr-2 px-1 rounded-sm">
+            NO
+          </span>
+          I had close contact but I will not have further contact or
+          interactions with the person while they are sick
+        </OptionsButton>
 
-      <Button onClick={handleLiveWithIsolate}>
-        No, I live with someone who has COVID-19 but they are isolating by
-        staying in a separate bedroom. I have had no close contact since they
-        isolated.
-      </Button>
-      <Button onClick={handleYesMoreContact}>
-        I live with someone who has COVID-19 and I may have close contact with
-        them again.
-      </Button>
-      <Button onClick={handleBackClick}>Back</Button>
+        <OptionsButton onClick={handleLiveWithIsolate}>
+          <span className="bg-gray-600 text-gray-100 mr-2 px-1 rounded-sm">
+            NO
+          </span>
+          I live with someone who has COVID-19 but they are isolating by staying
+          in a separate bedroom. I have had no close contact since they
+          isolated.
+        </OptionsButton>
+        <OptionsButton onClick={handleYesMoreContact}>
+          <span className="bg-red-600 text-red-100 mr-2 px-1 rounded-sm">
+            YES
+          </span>
+          I live with someone who has COVID-19 and I may have close contact with
+          them again.
+        </OptionsButton>
+      </div>
+
+      <div>
+        <NavigationButtons hideNext />
+      </div>
     </div>
   );
 };

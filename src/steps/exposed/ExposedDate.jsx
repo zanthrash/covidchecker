@@ -1,9 +1,10 @@
 import React from "react";
 import { useStateMachine } from "../../StateProvider";
 import { Button } from "../../components/Button";
-import DatePicker from "react-datepicker";
-import {} from "date-fns";
+import { DatePicker } from "../../components/DatePicker";
+import { Header } from "../../components/Header";
 import { excludeDatesAfterToday } from "../../utils/date";
+import { NavigationButtons } from "../../components/NavigationButtons";
 
 export const ExposedDate = () => {
   const { state, sendTo } = useStateMachine();
@@ -16,25 +17,18 @@ export const ExposedDate = () => {
     sendTo("SET_DATE", { date });
   };
 
-  const handleNext = () => {
-    sendTo("NEXT");
-  };
-
-  const handleBack = () => {
-    sendTo("BACK");
-  };
-
   return (
-    <div>
-      <p>What date where you exposed on?</p>
-      <DatePicker
-        todayButton="Go to today"
-        selected={state.context.dateExposed}
-        onChange={handleDateChange}
-        filterDate={excludeDatesAfterToday}
-      />
-      <Button onClick={handleBack}>Back</Button>
-      <Button onClick={handleNext}>Next</Button>
+    <div className="flex flex-col w-full items-center">
+      <Header>What date where you exposed on?</Header>
+      <div className="mb-64">
+        <DatePicker
+          todayButton="Go to today"
+          selected={state.context.dateExposed}
+          onChange={handleDateChange}
+          filterDate={excludeDatesAfterToday}
+        />
+      </div>
+      <NavigationButtons />
     </div>
   );
 };

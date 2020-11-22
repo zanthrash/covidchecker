@@ -3,7 +3,7 @@ import React from "react";
 export const Button = ({ onClick, children, className }) => {
   return (
     <button
-      className={`rounded-md 
+      className={`rounded-full 
       border-gray-700 border-2
   py-2
   px-4

@@ -1,35 +1,46 @@
 import React from "react";
 import { useStateMachine } from "../../StateProvider";
 import { Button } from "../../components/Button";
+import { Paragraph } from "../../components/Paragraph";
+import { NavigationButtons } from "../../components/NavigationButtons";
+import { Header } from "../../components/Header";
 
 export const PreventionFlow = () => {
   const { sendTo } = useStateMachine();
 
-  const handleRestartClick = () => {
-    sendTo("RESTART");
-  };
-
   return (
-    <div>
-      <h2>Here is what you should do to maximize your prevention</h2>
+    <div className="md:w-1/2 md:m-auto">
+      <Header>Here is what you should do to maximize your prevention</Header>
 
-      <p>
-        Avoid close contact.  Outside your home, keep 6 feet of distance between
-        yourself and people who don’t live in your household. Avoid social
-        gatherings with people outside your household. Inside your home, avoid
-        close contact with people who are sick.  Cover your mouth and nose with
-        a mask when around others Wash your hands or use sanitizer frequently
-        Monitor your health. Stay home if you have symptoms of COVID-19. Clean
-        and disinfect frequently touched surfaces daily
-        <a
-          target="_blank"
-          href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html"
-        >
-          CDC Prevention Guidelines
-        </a>
-      </p>
+      <Paragraph>
+        <ul className="list-disc">
+          <li>Avoid close contact.</li>
+          <li>
+            Outside your home, keep 6 feet of distance between yourself and
+            people who don’t live in your household. Avoid social gatherings
+            with people outside your household. Inside your home, avoid close
+            contact with people who are sick. 
+          </li>
+          <li>Cover your mouth and nose with a mask when around others.</li>
+          <li>Wash your hands or use sanitizer frequently.</li>
+          <li>Monitor your health.</li>
+          <li>Stay home if you have symptoms of COVID-19.</li>
+          <li>Clean and disinfect frequently touched surfaces daily</li>
+          <li>
+            <a
+              className="text-purple-600 cursor-pointer"
+              target="_blank"
+              href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html"
+            >
+              CDC Prevention Guidelines
+            </a>
+          </li>
+        </ul>
+      </Paragraph>
 
-      <Button onClick={handleRestartClick}>RESTART</Button>
+      <div>
+        <NavigationButtons hideNext />
+      </div>
     </div>
   );
 };

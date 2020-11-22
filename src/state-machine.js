@@ -153,7 +153,7 @@ export const stateMachine = createMachine({
       states: {
         overview: {
           on: {
-            RESTART: "#covid.scenario",
+            BACK: "#covid.scenario",
           },
         },
       },
