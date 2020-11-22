@@ -1,5 +1,5 @@
 import { formatToTimeZone } from "date-fns-timezone";
-import { listTimeZones } from "timezone-support";
+import { isAfter } from "date-fns";
 
 export const utcToMidwestDate = (date) => {
   const format = "dddd, MMMM D YYYY";
@@ -7,4 +7,8 @@ export const utcToMidwestDate = (date) => {
     timeZone: "America/Chicago",
   });
   return output;
+};
+
+export const excludeDatesAfterToday = (date) => {
+  return isAfter(Date.now(), date);
 };

@@ -1,8 +1,6 @@
 import React from "react";
 import { useStateMachine } from "../../StateProvider";
 import { addDays, subDays, formatDistanceStrict, format } from "date-fns";
-import { utcToZonedTime } from "date-fns-timezone";
-import { listTimeZones } from "timezone-support";
 import { Button } from "../../components/Button";
 import { utcToMidwestDate } from "../../utils/date";
 
@@ -18,7 +16,6 @@ export const EndDates = () => {
   } = state.context;
 
   React.useEffect(() => {
-    console.log(listTimeZones());
     const isolationDate = dateOfSymptomsStart
       ? addDays(dateOfSymptomsStart, 10)
       : addDays(dateTested, 10);

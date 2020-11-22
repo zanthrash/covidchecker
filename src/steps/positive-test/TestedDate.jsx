@@ -21,7 +21,7 @@ export const TestedDate = () => {
   };
 
   const handleBack = () => {
-    sendTo("BACK");
+    sendTo("RESTART");
   };
 
   const handleNext = () => {
