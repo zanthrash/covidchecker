@@ -1,8 +1,10 @@
 import { useStateMachine } from "../../StateProvider";
 import React from "react";
-import DatePicker from "react-datepicker";
 import { isAfter } from "date-fns";
 import { Button } from "../../components/Button";
+import { NavigationButtons } from "../../components/NavigationButtons";
+import { DatePicker } from "../../components/DatePicker";
+import { Header } from "../../components/Header";
 
 export const SymptomsDate = () => {
   const { state, sendTo } = useStateMachine();
@@ -24,18 +26,10 @@ export const SymptomsDate = () => {
     return isAfter(testDate, date);
   };
 
-  const handleBack = () => {
-    sendTo("BACK");
-  };
-
-  const handleNext = () => {
-    sendTo("NEXT");
-  };
-
   return (
-    <div>
-      <p>What date did your symptoms start?</p>
-      <div>
+    <div className="flex flex-col items-center w-full">
+      <Header>What date did your symptoms start?</Header>
+      <div className="mb-64">
         <DatePicker
           todayButton="Go to today"
           selected={state.context.dateOfSymptomsStart}
@@ -43,8 +37,7 @@ export const SymptomsDate = () => {
           filterDate={excludeDatesAfterTestDate}
         />
       </div>
-      <Button onClick={handleBack}>Back</Button>
-      <Button onClick={handleNext}>Next</Button>
+      <NavigationButtons />
     </div>
   );
 };

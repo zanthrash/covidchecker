@@ -3,6 +3,8 @@ import { useStateMachine } from "../../StateProvider";
 import { addDays, subDays, formatDistanceStrict, format } from "date-fns";
 import { Button } from "../../components/Button";
 import { utcToMidwestDate } from "../../utils/date";
+import { NavigationButtons } from "../../components/NavigationButtons";
+import { Header } from "../../components/Header";
 
 const dateFormat = "cccc, MMMM d y";
 
@@ -27,54 +29,65 @@ export const EndDates = () => {
     sendTo("SET_DATES", { isolationDate, infectiousDate });
   }, []);
 
-  const handleNextClick = () => {
-    sendTo("NEXT");
-  };
-
-  const handleBackClick = () => {
-    sendTo("BACK");
-  };
-
-  const handleRestartClick = () => {
-    sendTo("RESTART");
-  };
-
   return (
-    <>
-      <p> This are the days you can crawl out of your hole.</p>
-      <p>Date Tested: {utcToMidwestDate(dateTested)}</p>
-      {dateOfSymptomsStart && (
-        <p>Date of Symptoms: {utcToMidwestDate(dateOfSymptomsStart)}</p>
-      )}
-      <hr />
+    <div className="flex flex-col items-center">
+      <div>
+        <Header>Here are the facts:</Header>
+        <div className="mb-8">
+          <p className="text-lg">You tested positive on: </p>
+          <div className="font-semibold text-xl">
+            {utcToMidwestDate(dateTested)}
+          </div>
+        </div>
 
-      {isolationDate && (
-        <>
-          <p>Isolation Date: {utcToMidwestDate(isolationDate)}</p>
-          <p>
-            ...which in{" "}
-            {formatDistanceStrict(isolationDate, Date.now(), { unit: "day" })}
-          </p>
-        </>
-      )}
+        {dateOfSymptomsStart && (
+          <div className="mb-8">
+            <p className="text-lg">You had Covid symptoms on:</p>
+            <div className="font-semibold text-xl">
+              {utcToMidwestDate(dateOfSymptomsStart)}
+            </div>
+          </div>
+        )}
+        <hr />
 
-      {infectiousDate && (
-        <>
-          <p>Infectious Date: {utcToMidwestDate(infectiousDate)}</p>
-          <p>
-            ...which was{" "}
-            {formatDistanceStrict(infectiousDate, Date.now(), {
-              unit: "day",
-              addSuffix: true,
-            })}
-          </p>
-        </>
-      )}
+        {isolationDate && (
+          <div className="mb-8">
+            <p className="text-lg">This means you MUST self isolate until:</p>
+            <div className="font-semibold text-xl">
+              {utcToMidwestDate(isolationDate)}
+            </div>
+            <div className="font-semibold text-xl">
+              <span className="text-lg">which is</span>
+              <span className="bg-red-700 text-gray-100 px-1 rounded-sm m-1">
+                {formatDistanceStrict(isolationDate, Date.now(), {
+                  unit: "day",
+                })}
+              </span>
+              from <span className="text-red-700">today</span>
+            </div>
+          </div>
+        )}
 
-      <Button onClick={handleBackClick}>BACK</Button>
-      <Button onClick={handleNextClick}>NEXT</Button>
+        {infectiousDate && (
+          <div className="mb-8">
+            <p className="text-lg">You have been infectious since:</p>
+            <div className="font-semibold text-xl">
+              {utcToMidwestDate(infectiousDate)}
+            </div>
+            <div className="font-semibold text-xl">
+              <span className="text-lg">which was</span>
+              <span className="bg-red-700 text-gray-100 px-1 rounded-sm m-1">
+                {formatDistanceStrict(infectiousDate, Date.now(), {
+                  unit: "day",
+                  addSuffix: true,
+                })}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
 
-      <Button onClick={handleRestartClick}>Restart</Button>
-    </>
+      <NavigationButtons />
+    </div>
   );
 };

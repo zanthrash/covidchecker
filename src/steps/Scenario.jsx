@@ -1,6 +1,8 @@
 import React from "react";
 import { useStateMachine } from "../StateProvider";
 import { Button } from "../components/Button";
+import { OptionsButton } from "../components/OptionsButton";
+import { Header } from "../components/Header";
 
 export const Scenario = () => {
   const { state, sendTo } = useStateMachine();
@@ -17,15 +19,21 @@ export const Scenario = () => {
 
   return (
     <div>
-      <p>Please choose the option that best describes your situation:</p>
+      <Header>
+        Please choose the option that best describes your situation:
+      </Header>
 
-      <Button onClick={handlePositiveTest}>I have tested positive</Button>
-      <Button onClick={handleExposed}>
-        I have been exposed to someone with Covid-19
-      </Button>
-      <Button onClick={handlePreventionClick}>
-        Looking for prevention tips
-      </Button>
+      <div className="grid gap-2">
+        <OptionsButton onClick={handlePositiveTest}>
+          I have tested positive
+        </OptionsButton>
+        <OptionsButton onClick={handleExposed}>
+          I have been exposed to someone with Covid-19
+        </OptionsButton>
+        <OptionsButton onClick={handlePreventionClick}>
+          I am looking for prevention tips
+        </OptionsButton>
+      </div>
     </div>
   );
 };

@@ -4,8 +4,9 @@ export const Button = ({ onClick, children, className }) => {
   return (
     <button
       className={`rounded-md 
-  py-4
-  px-8
+      border-gray-700 border-2
+  py-2
+  px-4
   font-bold  ${className}`}
       onClick={onClick}
     >

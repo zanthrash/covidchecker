@@ -1,8 +1,11 @@
 import { useStateMachine } from "../../StateProvider";
 import React from "react";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { isAfter } from "date-fns";
 import { Button } from "../../components/Button";
+import { Header } from "../../components/Header";
+import { NavigationButtons } from "../../components/NavigationButtons";
+import { DatePicker } from "../../components/DatePicker";
 
 export const TestedDate = () => {
   const { state, sendTo } = useStateMachine();
@@ -20,27 +23,24 @@ export const TestedDate = () => {
     return isAfter(Date.now(), date);
   };
 
-  const handleBack = () => {
-    sendTo("RESTART");
-  };
-
-  const handleNext = () => {
-    sendTo("NEXT");
-  };
-
   return (
-    <div>
-      <p>What date where you tested on</p>
-      <div>
+    <div className="flex flex-col w-full items-center">
+      <Header>What date where you tested on?</Header>
+      <div className="mb-56">
         <DatePicker
+          className="rounded-md
+          border-gray-500
+          border-2
+          text-xl
+          p-2
+          "
           todayButton="Go to today"
           selected={state.context.dateTested}
           onChange={handleDateChange}
           filterDate={excludeDatesAfterToday}
         />
       </div>
-      <Button onClick={handleBack}>Back</Button>
-      <Button onClick={handleNext}>Next</Button>
+      <NavigationButtons />
     </div>
   );
 };

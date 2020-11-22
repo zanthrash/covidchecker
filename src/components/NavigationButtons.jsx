@@ -1,15 +1,26 @@
-import React from "react"
-import {NavigationButton} from "./NavigationButton"
+import React from "react";
+import { NavigationButton } from "./NavigationButton";
+import { useStateMachine } from "../StateProvider";
 
+export const NavigationButtons = ({ hideNext }) => {
+  const { state, sendTo } = useStateMachine();
 
+  const handleBack = () => {
+    sendTo("BACK");
+  };
 
-export const NavigationButtons = ({ onNext, onBack }) => {
+  const handleNext = () => {
+    sendTo("NEXT");
+  };
 
   return (
-    <div className="mt-20 flex justify-between">
-      <NavigationButton onClick={onBack}>Back</NavigationButton>
-      <NavigationButton onClick={onNext}>Next</NavigationButton>
+    <div className="flex justify-between w-2/3">
+      <NavigationButton onClick={handleBack}>Back</NavigationButton>
+      {hideNext ? (
+        <div />
+      ) : (
+        <NavigationButton onClick={handleNext}>Next</NavigationButton>
+      )}
     </div>
-  )
-
-}
+  );
+};

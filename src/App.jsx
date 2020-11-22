@@ -21,12 +21,13 @@ export const App = () => {
   const { state } = useStateMachine();
 
   return (
-    <div className="bg-gray-200 full font-sans">
+    <div>
       <header
         className="p-2 
       flex
       justify-center
-      text-2xl
+      text-sm
+      md:text-2xl 
       font-bold
       uppercase
       bg-gray-800
@@ -35,16 +36,16 @@ export const App = () => {
         <h1 className="text-gray-200 mb-0 ">Covid Clock</h1>
       </header>
       <main className="p-5 h-full ">
-        <StepsWrapper>
-          {state.matches("disclaimer") ? <Disclaimer /> : null}
-          {state.matches("scenario") ? <Scenario /> : null}
-          {state.matches("positive") ? <PositiveFlow /> : null}
-          {state.matches("exposed") ? <ExposedFlow /> : null}
-          {state.matches("prevention") ? <PreventionFlow /> : null}
-        </StepsWrapper>
-        <pre className="text-base">
+        {/* <StepsWrapper> */}
+        {state.matches("disclaimer") ? <Disclaimer /> : null}
+        {state.matches("scenario") ? <Scenario /> : null}
+        {state.matches("positive") ? <PositiveFlow /> : null}
+        {state.matches("exposed") ? <ExposedFlow /> : null}
+        {state.matches("prevention") ? <PreventionFlow /> : null}
+        {/* </StepsWrapper> */}
+        {/* <pre className="text-base">
           <code>{JSON.stringify(state, null, 2)}</code>
-        </pre>
+        </pre> */}
       </main>
     </div>
   );

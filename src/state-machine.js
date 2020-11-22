@@ -36,6 +36,7 @@ export const stateMachine = createMachine({
           }),
           on: {
             NEXT: "symptomsAtTest",
+            BACK: "#covid.scenario",
             SET_DATE: {
               actions: assign({ dateTested: (ctx, event) => event.date }),
             },

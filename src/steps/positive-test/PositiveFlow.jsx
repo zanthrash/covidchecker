@@ -11,17 +11,11 @@ export const PositiveFlow = () => {
 
   return (
     <>
-      <div>{state.matches("positive.testedDate") ? <TestedDate /> : null}</div>
-      <div>
-        {state.matches("positive.symptomsAtTest") ? <SymptomsAtTest /> : null}
-      </div>
-      <div>
-        {state.matches("positive.symptomsStartDate") ? <SymptomsDate /> : null}
-      </div>
-      <div>
-        {state.matches("positive.displayEndDates") ? <EndDates /> : null}
-      </div>
-      <div>{state.matches("positive.actionPlan") ? <ActionPlan /> : null}</div>
+      {state.matches("positive.testedDate") ? <TestedDate /> : null}
+      {state.matches("positive.symptomsAtTest") ? <SymptomsAtTest /> : null}
+      {state.matches("positive.symptomsStartDate") ? <SymptomsDate /> : null}
+      {state.matches("positive.displayEndDates") ? <EndDates /> : null}
+      {state.matches("positive.actionPlan") ? <ActionPlan /> : null}
     </>
   );
 };
