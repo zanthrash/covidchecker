@@ -3,7 +3,7 @@ import { NavigationButton } from "./NavigationButton";
 import { useStateMachine } from "../StateProvider";
 
 export const NavigationButtons = ({ hideNext }) => {
-  const { state, sendTo } = useStateMachine();
+  const { sendTo } = useStateMachine();
 
   const handleBack = () => {
     sendTo("BACK");

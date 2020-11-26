@@ -5,7 +5,7 @@ import { Header } from "../../components/Header";
 import { NavigationButtons } from "../../components/NavigationButtons";
 
 export const SymptomsAtTest = () => {
-  const { state, sendTo } = useStateMachine();
+  const { sendTo } = useStateMachine();
 
   const handleNoClick = () => {
     sendTo("NO");
@@ -15,17 +15,15 @@ export const SymptomsAtTest = () => {
     sendTo("YES");
   };
 
-  const handleBack = () => {
-    sendTo("BACK");
-  };
-
   return (
-    <div>
-      <Header>Did you have any symptoms at the time of your Covid test?</Header>
+    <div className="flex flex-col items-center">
+      <Header>
+        Did you have any symptoms at the time of your COVID-19 test?
+      </Header>
 
-      <div className="grid gap-4 mb-40 w-1/3">
-        <OptionsButton onClick={handleNoClick}>NO</OptionsButton>
+      <div className="grid gap-4 mb-40 w-30">
         <OptionsButton onClick={handleYesClick}>YES</OptionsButton>
+        <OptionsButton onClick={handleNoClick}>NO</OptionsButton>
       </div>
 
       <NavigationButtons hideNext={true} />

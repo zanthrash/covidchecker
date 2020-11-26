@@ -5,11 +5,7 @@ import { Header } from "../../components/Header";
 import { NavigationButtons } from "../../components/NavigationButtons";
 
 export const CloseContact = () => {
-  const { state, sendTo } = useStateMachine();
-
-  const handleBackClick = () => {
-    sendTo("BACK");
-  };
+  const { sendTo } = useStateMachine();
 
   const handleNoMoreContact = () => {
     sendTo("NO_FURTHER_CONTACT");

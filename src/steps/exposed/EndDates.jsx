@@ -1,58 +1,53 @@
 import React from "react";
 import { addDays, formatDistanceStrict } from "date-fns";
-import { Button } from "../../components/Button";
 import { useStateMachine } from "../../StateProvider";
 import { utcToMidwestDate } from "../../utils/date";
 import { Header } from "../../components/Header";
 import { NavigationButtons } from "../../components/NavigationButtons";
+import { RiVirusLine } from "react-icons/ri";
+import { BsHouseDoor } from "react-icons/bs";
 
 export const EndDates = () => {
   const { state, sendTo } = useStateMachine();
-  const { dateExposed, continuedCloseContact, quarantineDate } = state.context;
+  const { dateExposed, quarantineDate } = state.context;
 
   React.useEffect(() => {
     const quarantineDate = addDays(dateExposed, 14);
 
     sendTo("SET_DATE", { quarantineDate });
-  }, []);
-
-  const handleNextClick = () => {
-    sendTo("NEXT");
-  };
-
-  const handleBackClick = () => {
-    sendTo("BACK");
-  };
-
-  const handleRestartClick = () => {
-    sendTo("RESTART");
-  };
+  }, [dateExposed, sendTo]);
 
   return (
     <div className="flex flex-col items-center">
       <div>
         <Header>Here are the facts:</Header>
-        <div className="mb-8">
-          <p className="text-lg">You exposed on: </p>
-          <div className="font-semibold text-xl">
-            {utcToMidwestDate(dateExposed)}
+        <div className="flex mb-8 space-x-3">
+          <RiVirusLine className="text-5xl" />
+          <div>
+            <p className="text-lg">You exposed on: </p>
+            <div className="font-semibold text-xl">
+              {utcToMidwestDate(dateExposed)}
+            </div>
           </div>
         </div>
 
         {quarantineDate && (
-          <div className="mb-8">
-            <p className="text-lg">This means you MUST self isolate until:</p>
-            <div className="font-semibold text-xl">
-              {utcToMidwestDate(quarantineDate)}
-            </div>
-            <div className="font-semibold text-xl">
-              <span className="text-lg">which is</span>
-              <span className="bg-red-700 text-gray-100 px-1 rounded-sm m-1">
-                {formatDistanceStrict(quarantineDate, Date.now(), {
-                  unit: "day",
-                })}
-              </span>
-              from <span className="text-red-700">today</span>
+          <div className="mb-8 flex space-x-3">
+            <BsHouseDoor className="text-5xl" />
+            <div>
+              <p className="text-lg">This means you MUST self isolate until:</p>
+              <div className="font-semibold text-xl">
+                {utcToMidwestDate(quarantineDate)}
+              </div>
+              <div className="font-semibold text-xl">
+                <span className="text-lg">which is</span>
+                <span className="bg-red-700 text-gray-100 px-1 rounded-sm m-1">
+                  {formatDistanceStrict(quarantineDate, Date.now(), {
+                    unit: "day",
+                  })}
+                </span>
+                from <span className="text-red-700">today</span>
+              </div>
             </div>
           </div>
         )}
@@ -60,24 +55,5 @@ export const EndDates = () => {
 
       <NavigationButtons />
     </div>
-    // <>
-    //   <p>Date Exposed: {utcToMidwestDate(dateExposed)}</p>
-    //   <hr />
-
-    //   {quarantineDate && (
-    //     <>
-    //       <p>Quarantine Date: {utcToMidwestDate(quarantineDate)}</p>
-    //       <p>
-    //         ...which in{" "}
-    //         {formatDistanceStrict(quarantineDate, Date.now(), { unit: "day" })}
-    //       </p>
-    //     </>
-    //   )}
-
-    //   <Button onClick={handleBackClick}>BACK</Button>
-    //   <Button onClick={handleNextClick}>NEXT</Button>
-
-    //   <Button onClick={handleRestartClick}>Restart</Button>
-    // </>
   );
 };

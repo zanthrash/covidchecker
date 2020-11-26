@@ -1,7 +1,6 @@
 import { useStateMachine } from "../../StateProvider";
 import React from "react";
 import { isAfter } from "date-fns";
-import { Button } from "../../components/Button";
 import { NavigationButtons } from "../../components/NavigationButtons";
 import { DatePicker } from "../../components/DatePicker";
 import { Header } from "../../components/Header";
@@ -15,7 +14,7 @@ export const SymptomsDate = () => {
       state.context.dateTested ||
       Date.now();
     sendTo("SET_DATE", { date: selectedDate });
-  }, []);
+  }, [sendTo, state.context.dateOfSymptomsStart, state.context.dateTested]);
 
   const handleDateChange = (date) => {
     sendTo("SET_DATE", { date });

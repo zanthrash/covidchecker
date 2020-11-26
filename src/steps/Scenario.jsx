@@ -1,11 +1,10 @@
 import React from "react";
 import { useStateMachine } from "../StateProvider";
-import { Button } from "../components/Button";
 import { OptionsButton } from "../components/OptionsButton";
 import { Header } from "../components/Header";
 
 export const Scenario = () => {
-  const { state, sendTo } = useStateMachine();
+  const { sendTo } = useStateMachine();
 
   const handlePreventionClick = () => {
     sendTo("PREVENTION");
@@ -18,17 +17,17 @@ export const Scenario = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Header>
         Please choose the option that best describes your situation:
       </Header>
 
-      <div className="grid gap-2">
+      <div className="grid gap-2 md:w-1/2">
         <OptionsButton onClick={handlePositiveTest}>
           I have tested positive
         </OptionsButton>
         <OptionsButton onClick={handleExposed}>
-          I have been exposed to someone with Covid-19
+          I was exposed to someone who has COVID-19
         </OptionsButton>
         <OptionsButton onClick={handlePreventionClick}>
           I am looking for prevention tips

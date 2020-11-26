@@ -7,7 +7,7 @@ import { useStateMachine } from "../../StateProvider";
 import { ActionPlan } from "./ActionPlan";
 
 export const PositiveFlow = () => {
-  const { state, sentTo } = useStateMachine();
+  const { state } = useStateMachine();
 
   return (
     <>

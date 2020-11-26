@@ -7,7 +7,7 @@ import { EndDates } from "./EndDates";
 import { ActionPlan } from "./ActionPlan";
 
 export const ExposedFlow = () => {
-  const { state, sendTo } = useStateMachine();
+  const { state } = useStateMachine();
 
   return (
     <div>

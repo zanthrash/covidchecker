@@ -1,13 +1,9 @@
 import React from "react";
-import { useStateMachine } from "../../StateProvider";
-import { Button } from "../../components/Button";
 import { Paragraph } from "../../components/Paragraph";
 import { NavigationButtons } from "../../components/NavigationButtons";
 import { Header } from "../../components/Header";
 
 export const PreventionFlow = () => {
-  const { sendTo } = useStateMachine();
-
   return (
     <div className="md:w-1/2 md:m-auto">
       <Header>Here is what you should do to maximize your prevention</Header>
@@ -30,6 +26,7 @@ export const PreventionFlow = () => {
             <a
               className="text-purple-600 cursor-pointer"
               target="_blank"
+              rel="noreferrer"
               href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html"
             >
               CDC Prevention Guidelines

@@ -1,15 +1,11 @@
 import React from "react";
-import { Button } from "../../components/Button";
-import { useStateMachine } from "../../StateProvider";
 import { Paragraph } from "../../components/Paragraph";
 import { Header } from "../../components/Header";
 import { NavigationButtons } from "../../components/NavigationButtons";
 
 export const Overview = () => {
-  const { sendTo } = useStateMachine();
-
   return (
-    <div className="md:w-1/2 md:m-auto flex flex-col">
+    <div className="md:w-2/3 md:m-auto flex flex-col">
       <Header>How to know if you've been exposed</Header>
       <Paragraph>
         If you were a close contact of someone with COVID-19 while they were
@@ -20,8 +16,10 @@ export const Overview = () => {
         they had symptoms, or two days before they tested positive if they did
         not have symptoms.
       </Paragraph>
-      <Paragraph>You are considered a close contact if: </Paragraph>
-      <ul className="list-disc mb-20">
+      <Paragraph className="font-semibold">
+        You are considered a close contact if: 
+      </Paragraph>
+      <ul className="list-disc list-inside mb-20">
         <li>
           You were within 6 feet of someone with COVID-19 for more than 15
           minutes while they were infectious.
@@ -35,9 +33,11 @@ export const Overview = () => {
           hugged or kissed them).
         </li>
         <li>
-          You shared eating or drinking utensils with the person with COVID? The
-          person with COVID coughed, sneezed or somehow got respiratory droplets
-          on you. 
+          You shared eating or drinking utensils with the person with COVID?
+        </li>
+        <li>
+          The person with COVID coughed, sneezed or somehow got respiratory
+          droplets on you. 
         </li>
       </ul>
 

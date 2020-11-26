@@ -1,5 +1,23 @@
 /* @import '~antd/dist/antd.css'; */
 
+li {
+  display: grid;
+  grid-template-columns: 0 1fr;
+  grid-gap: 1.75em;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+ul li::before {
+  content: "";
+  background-image: url("svg/virus-line.svg");
+  background-repeat: no-repeat;
+  height: 1em;
+  width: 1em;
+  margin-top: 3px;
+  background-size: contain;
+}
+
 /* .App {
   text-align: center;
 }
