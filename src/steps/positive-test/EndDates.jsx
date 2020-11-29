@@ -2,7 +2,7 @@ import React from "react";
 import { BiTestTube } from "react-icons/bi";
 import { useStateMachine } from "../../StateProvider";
 import { addDays, subDays, formatDistanceStrict } from "date-fns";
-import { utcToMidwestDate } from "../../utils/date";
+import { utcToMidwestDate, addDateToCalendar } from "../../utils/date";
 import { NavigationButtons } from "../../components/NavigationButtons";
 import { Header } from "../../components/Header";
 import { isolationDateOffset, infectiousDateOffset } from "../../constants";
@@ -84,7 +84,10 @@ export const EndDates = () => {
             <div>
               <p className="text-lg">This means you MUST self isolate until:</p>
               <div className="font-semibold text-xl">
-                {utcToMidwestDate(isolationDate)}
+                {addDateToCalendar(
+                  utcToMidwestDate(isolationDate),
+                  "Last Day Of COVID-19 Self Isolation"
+                )}
               </div>
               <div className="font-semibold text-xl">
                 <span className="text-lg">which is</span>

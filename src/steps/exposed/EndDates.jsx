@@ -1,7 +1,7 @@
 import React from "react";
 import { addDays, formatDistanceStrict } from "date-fns";
 import { useStateMachine } from "../../StateProvider";
-import { utcToMidwestDate } from "../../utils/date";
+import { utcToMidwestDate, addDateToCalendar } from "../../utils/date";
 import { Header } from "../../components/Header";
 import { NavigationButtons } from "../../components/NavigationButtons";
 import { RiVirusLine } from "react-icons/ri";
@@ -37,7 +37,10 @@ export const EndDates = () => {
             <div>
               <p className="text-lg">This means you MUST self isolate until:</p>
               <div className="font-semibold text-xl">
-                {utcToMidwestDate(quarantineDate)}
+                {addDateToCalendar(
+                  utcToMidwestDate(quarantineDate),
+                  "Last Day Of COVID-19 Self Isolation"
+                )}
               </div>
               <div className="font-semibold text-xl">
                 <span className="text-lg">which is</span>

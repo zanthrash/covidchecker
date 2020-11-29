@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "../../components/Link";
 import { useStateMachine } from "../../StateProvider";
-import { utcToMidwestDate } from "../../utils/date";
+import { utcToMidwestDate, addDateToCalendar } from "../../utils/date";
 import { Paragraph } from "../../components/Paragraph";
 import { NavigationButtons } from "../../components/NavigationButtons";
 import { BsExclamationCircle } from "react-icons/bs";
@@ -19,7 +19,13 @@ export const ActionPlan = () => {
       </Paragraph>
       <Paragraph>
         To prevent the spread of COVID-19 you should quarantine until
-        <span className="font-bold"> {utcToMidwestDate(quarantineDate)} </span>
+        <span className="font-bold">
+          {" "}
+          {addDateToCalendar(
+            utcToMidwestDate(quarantineDate),
+            "Last Day Of COVID-19 Self Isolation"
+          )}{" "}
+        </span>
         or{" "}
         <span className="font-bold text-red-700">
           14 days after your last close contact with the person who had

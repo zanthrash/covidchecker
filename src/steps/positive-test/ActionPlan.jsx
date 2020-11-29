@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "../../components/Link";
 import { useStateMachine } from "../../StateProvider";
-import { utcToMidwestDate } from "../../utils/date";
+import { utcToMidwestDate, addDateToCalendar } from "../../utils/date";
 import { NavigationButtons } from "../../components/NavigationButtons";
 import { Paragraph } from "../../components/Paragraph";
 import { CopyMessageButton } from "./CopyMessageButton";
@@ -32,7 +32,10 @@ export const ActionPlan = () => {
         The <span className="font-bold uppercase">first</span> day you could
         return to normal activities would be{" "}
         <span className="font-bold underline">
-          {utcToMidwestDate(isolationDate)}
+          {addDateToCalendar(
+            utcToMidwestDate(isolationDate),
+            "Last Day Of COVID-19 Self Isolation"
+          )}
         </span>{" "}
         if you have recovered and{" "}
         <span className="font-bold">

@@ -1,5 +1,3 @@
-/* @import '~antd/dist/antd.css'; */
-
 li {
   display: grid;
   grid-template-columns: 0 1fr;
@@ -18,41 +16,19 @@ ul li::before {
   background-size: contain;
 }
 
-/* .App {
-  text-align: center;
+.chq-atc--button {
+  color: currentColor;
+  font-weight: inherit;
+  padding-right: 0px;
+  padding-left: 0px;
+  display: inline-block;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chq-atc--button:hover,
+.chq-atc--button:active {
+  text-decoration: underline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.chq-atc--button path {
+  fill: rgba(185, 28, 28, 1);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

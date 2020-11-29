@@ -14,6 +14,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import "react-datepicker/dist/react-datepicker.css";
+import "@culturehq/add-to-calendar/dist/styles.css";
 
 export const App = () => {
   const { state, sendTo } = useStateMachine();
